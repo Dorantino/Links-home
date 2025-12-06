@@ -1,4 +1,18 @@
+using linkHomeApp.Data;
+using DotNetEnv;
+using Microsoft.EntityFrameworkCore;
+
+Env.Load();
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<linkHomeContext>(options =>
+{
+    options.UseMySql(
+        Env.GetString("CONNECTION_STRING"),
+        ServerVersion.AutoDetect(Env.GetString("CONNECTION_STRING"))
+    );
+});
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

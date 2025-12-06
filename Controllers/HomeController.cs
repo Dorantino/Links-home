@@ -1,31 +1,24 @@
-using System.Diagnostics;
+using linkHomeApp.Data;
+using linkHomeApp.Models;
 using Microsoft.AspNetCore.Mvc;
-using web_application_project_3_Dorantino.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace web_application_project_3_Dorantino.Controllers;
 
-public class HomeController : Controller
+namespace linkHomeApp.Controllers
 {
-    private readonly ILogger<HomeController> _logger;
-
-    public HomeController(ILogger<HomeController> logger)
+    public class HomeController : Controller
     {
-        _logger = logger;
-    }
+        private  linkHomeContext _context;
 
-    public IActionResult Index()
-    {
-        return View();
-    }
+        public HomeController(linkHomeContext context)
+        {
+            _context = context;
+        }
 
-    public IActionResult Privacy()
-    {
-        return View();
-    }
+        public IActionResult Index()
+        {
 
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(_context);
+        }
     }
 }

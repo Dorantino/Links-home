@@ -1,7 +1,6 @@
 services:
   db:
-    build:
-      context: ./mysql
+    image: mysql:8.0
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-secret}
@@ -10,9 +9,8 @@ services:
       - "3306:3306"
     volumes:
       - db-data:/var/lib/mysql
-    # needed for depends_on in server
     healthcheck:
-      test: ["CMD", "mysqladmin" ,"ping", "-h", "127.0.0.1", "-u", "root", "--password=$MYSQL_ROOT_PASSWORD"]
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "127.0.0.1", "-u", "root", "--password=secret"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -21,7 +19,7 @@ services:
     image: adminer
     restart: always
     ports:
-      - 8080:8080
+      - "8080:8080"
     depends_on:
       db:
         condition: service_healthy
