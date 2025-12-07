@@ -30,8 +30,8 @@ namespace linkHomeApp.Data
             modelBuilder.Entity<Link>().HasData(
                 // News category (Id = 1)
                 new Link { Id = 1, Label = "CNN", Url = "https://www.cnn.com", Pinned = true, CategoryId = 1 },
-                new Link { Id = 2, Label = "BBC", Url = "https://www.bbc.com", Pinned = false, CategoryId = 1 },
-                new Link { Id = 3, Label = "Reuters", Url = "https://www.reuters.com", Pinned = false, CategoryId = 1 },
+                new Link { Id = 2, Label = "BBC", Url = "https://www.bbc.com", Pinned = true, CategoryId = 1 },
+                new Link { Id = 3, Label = "Reuters", Url = "https://www.reuters.com", Pinned = true, CategoryId = 1 },
 
                 // Social category (Id = 2)
                 new Link { Id = 4, Label = "Facebook", Url = "https://www.facebook.com", Pinned = true, CategoryId = 2 },

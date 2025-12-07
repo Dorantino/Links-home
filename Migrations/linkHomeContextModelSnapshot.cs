@@ -36,6 +36,28 @@ namespace linkHomeApp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Title = "News"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Title = "Social"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Title = "Education"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Title = "Entertainment"
+                        });
                 });
 
             modelBuilder.Entity("linkHomeApp.Models.Link", b =>
@@ -65,6 +87,104 @@ namespace linkHomeApp.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Links");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CategoryId = 1,
+                            Label = "CNN",
+                            Pinned = true,
+                            Url = "https://www.cnn.com"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CategoryId = 1,
+                            Label = "BBC",
+                            Pinned = false,
+                            Url = "https://www.bbc.com"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CategoryId = 1,
+                            Label = "Reuters",
+                            Pinned = false,
+                            Url = "https://www.reuters.com"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CategoryId = 2,
+                            Label = "Facebook",
+                            Pinned = true,
+                            Url = "https://www.facebook.com"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CategoryId = 2,
+                            Label = "Twitter",
+                            Pinned = false,
+                            Url = "https://www.twitter.com"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CategoryId = 2,
+                            Label = "Instagram",
+                            Pinned = false,
+                            Url = "https://www.instagram.com"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CategoryId = 3,
+                            Label = "Khan Academy",
+                            Pinned = false,
+                            Url = "https://www.khanacademy.org"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CategoryId = 3,
+                            Label = "Coursera",
+                            Pinned = false,
+                            Url = "https://www.coursera.org"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CategoryId = 3,
+                            Label = "edX",
+                            Pinned = false,
+                            Url = "https://www.edx.org"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            CategoryId = 4,
+                            Label = "YouTube",
+                            Pinned = true,
+                            Url = "https://www.youtube.com"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            CategoryId = 4,
+                            Label = "Netflix",
+                            Pinned = false,
+                            Url = "https://www.netflix.com"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            CategoryId = 4,
+                            Label = "Spotify",
+                            Pinned = false,
+                            Url = "https://www.spotify.com"
+                        });
                 });
 
             modelBuilder.Entity("linkHomeApp.Models.Link", b =>
