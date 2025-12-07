@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using linkHomeApp.Data;
 
@@ -10,9 +11,11 @@ using linkHomeApp.Data;
 namespace linkHomeApp.Migrations
 {
     [DbContext(typeof(linkHomeContext))]
-    partial class linkHomeContextModelSnapshot : ModelSnapshot
+    [Migration("20251206231435_SeedCategoriesAndLinks")]
+    partial class SeedCategoriesAndLinks
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

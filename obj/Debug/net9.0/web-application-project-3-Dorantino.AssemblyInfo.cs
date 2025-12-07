@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("web-application-project-3-Dorantino")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d378ff8f9559da57427010f61dd94c96589acca1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5b52d9455f6ffa0bd4ff2d015fda291d98c73c24")]
 [assembly: System.Reflection.AssemblyProductAttribute("web-application-project-3-Dorantino")]
 [assembly: System.Reflection.AssemblyTitleAttribute("web-application-project-3-Dorantino")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

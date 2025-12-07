@@ -1,8 +1,55 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model List<linkHomeApp.Models.Category>
+
+@{
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container py-6">
+    <h1 class="text-center mb-4">Welcome to LinkHome</h1>
+
+    <div class="row">
+        @foreach (var category in Model)
+        {
+            // Define pinnedLinks and normalLinks here as strongly typed lists
+            List<linkHomeApp.Models.Link> pinnedLinks = category.Links?.Where(l => l.Pinned).ToList() ?? new List<linkHomeApp.Models.Link>();
+            List<linkHomeApp.Models.Link> normalLinks = category.Links?.Where(l => !l.Pinned).ToList() ?? new List<linkHomeApp.Models.Link>();
+
+            <div class="col-12 col-md-3 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">@category.Title</h5>
+
+                        @* Pinned Links *@
+                        @if (pinnedLinks.Any())
+                        {
+                            <ul class="list-unstyled mb-2">
+                                @foreach (var link in pinnedLinks)
+                                {
+                                    <li class="mb-1">
+                                        <img src="https://www.google.com/s2/favicons?domain_url=@link.Url" class="me-2" />
+                                        <a href="@link.Url" target="_blank">@link.Label</a>
+                                    </li>
+                                }
+                            </ul>
+                            <hr />
+                        }
+
+                        @* Normal Links *@
+                        @if (normalLinks.Any())
+                        {
+                            <ul class="list-unstyled">
+                                @foreach (var link in normalLinks)
+                                {
+                                    <li class="mb-1">
+                                        <img src="https://www.google.com/s2/favicons?domain_url=@link.Url" class="me-2" />
+                                        <a href="@link.Url" target="_blank">@link.Label</a>
+                                    </li>
+                                }
+                            </ul>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 </div>
