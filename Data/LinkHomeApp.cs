@@ -49,6 +49,8 @@ namespace linkHomeApp.Data
                 new Link { Id = 12, Label = "Spotify", Url = "https://www.spotify.com", Pinned = false, CategoryId = 4 }
             );
         }
+
+
     }
 
 }

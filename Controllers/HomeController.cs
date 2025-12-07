@@ -16,7 +16,7 @@ namespace linkHomeApp.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public IActionResult PublicIndex()
         {
 
             var categories = _context.Categories
