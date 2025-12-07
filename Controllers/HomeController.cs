@@ -19,24 +19,23 @@ namespace linkHomeApp.Controllers
         public IActionResult Index()
         {
 
-            // var categories = _context.Categories
-            // .Include(c => c.Links)
-            // .ToList();
+            var categories = _context.Categories
+            .Include(c => c.Links)
+            .ToList();
 
-            // // Sort links: pinned first, then alphabetical
-            // foreach (var cat in categories)
-            // {
-            //     if (cat.Links != null)
-            //     {
-            //         cat.Links = cat.Links
-            //             .OrderByDescending(l => l.Pinned)
-            //             .ThenBy(l => l.Label)
-            //             .ToList();
-            //     }
-            // }
+            // Sort links: pinned first, then alphabetical
+            foreach (var cat in categories)
+            {
+                if (cat.Links != null)
+                {
+                    cat.Links = cat.Links
+                        .OrderByDescending(l => l.Pinned)
+                        .ThenBy(l => l.Label)
+                        .ToList();
+                }
+            }
 
-            // return View(categories);
-            return View(_context.Categories.Include(c => c.Links).ToList());
+            return View(categories);
         }
     }
 }
