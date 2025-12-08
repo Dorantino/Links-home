@@ -6,7 +6,7 @@ using linkHomeApp.Models;
 
 namespace linkHomeApp.Controllers
 {
-    [Authorize] // only signed-in users (Identity)
+    [Authorize]
     public class AdminController : Controller
     {
         private readonly linkHomeContext _context;
@@ -14,8 +14,7 @@ namespace linkHomeApp.Controllers
         {
             _context = context;
         }
-
-        // GET: /Admin
+        // --------------------------------------------------admin dashboard
         public async Task<IActionResult> AdminIndex()
         {
             var categories = await _context.Categories
@@ -88,7 +87,6 @@ namespace linkHomeApp.Controllers
             return View(link);
         }
 
-        // POST: Admin/EditLink
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditLink(Link link)
@@ -101,6 +99,28 @@ namespace linkHomeApp.Controllers
             }
             ViewBag.Categories = await _context.Categories.ToListAsync();
             return View(link);
+        }
+
+        public async Task<IActionResult> DeleteLink(int id)
+        {
+            var link = await _context.Links
+                .Include(l => l.Category)
+                .FirstOrDefaultAsync(l => l.Id == id);
+            if (link == null) return NotFound();
+            return View(link);
+        }
+
+        [HttpPost, ActionName("DeleteLink")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteLinkConfirmed(int id)
+        {
+            var link = await _context.Links.FindAsync(id);
+            if (link != null)
+            {
+                _context.Links.Remove(link);
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToAction(nameof(AdminIndex));
         }
     }
 }
