@@ -32,4 +32,26 @@ namespace linkHomeApp.Controllers
             }
 
             return View(categories);
-        }}}
+        }
+
+        public async Task<IActionResult> EditCategory(int id)
+        {
+            var category = await _context.Categories.FindAsync(id);
+            if (category == null) return NotFound();
+            return View(category);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditCategory(Category category)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Update(category);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(AdminIndex));
+            }
+            return View(category);
+        }
+    }
+}

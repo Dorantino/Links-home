@@ -1,0 +1,18 @@
+@model linkHomeApp.Models.Category
+<partial name="_ValidationScriptsPartial" />
+
+<h2>Edit Category</h2>
+
+<form asp-action="EditCategory" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="mb-3">
+        <label asp-for="Title" class="form-label"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a asp-action="AdminIndex" class="btn btn-secondary">Cancel</a>
+</form>
+

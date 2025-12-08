@@ -1,6 +1,8 @@
 @model List<linkHomeApp.Models.Category>
 @using Microsoft.AspNetCore.Identity
-@inject SignInManager<IdentityUser> SignInManager
+@inject SignInManager<linkHomeApp.Areas.Identity.Data.User> SignInManager
+@inject UserManager<linkHomeApp.Areas.Identity.Data.User> UserManager
+
 
 @{
     ViewData["Title"] = "Admin";
@@ -18,11 +20,11 @@
             <div class="col-12 col-md-3 mb-4">
                 <div class="card h-100">
                     <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
                             <h5 class="card-title mb-0">@category.Title</h5>
-                            <div>
+                            <div class="btn-group" role="group">
                                 <a asp-action="EditCategory" asp-route-id="@category.Id"
-                                    class="btn btn-sm btn-outline-secondary me-1">Edit Category</a>
+                                    class="btn btn-sm btn-outline-secondary">Edit Category</a>
                                 <a asp-action="AddLink" asp-route-categoryId="@category.Id"
                                     class="btn btn-sm btn-primary">Add Link</a>
                             </div>
