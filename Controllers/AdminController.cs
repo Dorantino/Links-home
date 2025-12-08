@@ -34,6 +34,7 @@ namespace linkHomeApp.Controllers
             return View(categories);
         }
 
+        // --------------------------------------------------category management
         public async Task<IActionResult> EditCategory(int id)
         {
             var category = await _context.Categories.FindAsync(id);
@@ -52,6 +53,54 @@ namespace linkHomeApp.Controllers
                 return RedirectToAction(nameof(AdminIndex));
             }
             return View(category);
+        }
+
+        // --------------------------------------------------link management
+        public IActionResult AddLink(int categoryId)
+        {
+            var category = _context.Categories.Find(categoryId);
+            if (category == null) return NotFound();
+
+            var link = new Link { CategoryId = categoryId };
+            return View(link);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddLink(Link link)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Links.Add(link);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(AdminIndex));
+            }
+            return View(link);
+        }
+
+        
+        public async Task<IActionResult> EditLink(int id)
+        {
+            var link = await _context.Links.FindAsync(id);
+            if (link == null) return NotFound();
+
+            ViewBag.Categories = await _context.Categories.ToListAsync();
+            return View(link);
+        }
+
+        // POST: Admin/EditLink
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditLink(Link link)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Update(link);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(AdminIndex));
+            }
+            ViewBag.Categories = await _context.Categories.ToListAsync();
+            return View(link);
         }
     }
 }

@@ -1,0 +1,28 @@
+@model linkHomeApp.Models.Link
+<partial name="_ValidationScriptsPartial" />
+
+<h2>Add Link</h2>
+
+<form asp-action="AddLink" method="post">
+    <input type="hidden" asp-for="CategoryId" />
+    
+    <div class="mb-3">
+        <label asp-for="Label" class="form-label"></label>
+        <input asp-for="Label" class="form-control" />
+        <span asp-validation-for="Label" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Url" class="form-label"></label>
+        <input asp-for="Url" class="form-control" />
+        <span asp-validation-for="Url" class="text-danger"></span>
+    </div>
+
+    <div class="form-check mb-3">
+        <input asp-for="Pinned" class="form-check-input" />
+        <label asp-for="Pinned" class="form-check-label"></label>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add</button>
+    <a asp-action="AdminIndex" class="btn btn-secondary">Cancel</a>
+</form>
