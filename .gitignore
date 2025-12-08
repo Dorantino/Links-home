@@ -1,2 +1,14 @@
+*.user
+*.rsuser
+*.suo
+*.cache
+*.log
+*.pdb
+*.mdb
+*.db
+*.jfm
+
+# .NET build artifacts
 bin/
 obj/
+out/
