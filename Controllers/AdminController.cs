@@ -6,7 +6,7 @@ using linkHomeApp.Models;
 
 namespace linkHomeApp.Controllers
 {
-    [Authorize]
+    // [Authorize]
     public class AdminController : Controller
     {
         private readonly linkHomeContext _context;
@@ -77,7 +77,7 @@ namespace linkHomeApp.Controllers
             return View(link);
         }
 
-        
+
         public async Task<IActionResult> EditLink(int id)
         {
             var link = await _context.Links.FindAsync(id);

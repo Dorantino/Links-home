@@ -5,14 +5,16 @@
 }
 
 <div class="container py-6">
-    <h1 class="text-center mb-4">Welcome to LinkHome</h1>
+    <h1 class="text-center mt-5 mb-4">Welcome to LinkHome</h1>
 
     <div class="row">
         @foreach (var category in Model)
         {
             // Define pinnedLinks and normalLinks here as strongly typed lists
-            List<linkHomeApp.Models.Link> pinnedLinks = category.Links?.Where(l => l.Pinned).ToList() ?? new List<linkHomeApp.Models.Link>();
-            List<linkHomeApp.Models.Link> normalLinks = category.Links?.Where(l => !l.Pinned).ToList() ?? new List<linkHomeApp.Models.Link>();
+            List<linkHomeApp.Models.Link> pinnedLinks = category.Links?.Where(l => l.Pinned).ToList() ?? new
+        List<linkHomeApp.Models.Link>();
+            List<linkHomeApp.Models.Link> normalLinks = category.Links?.Where(l => !l.Pinned).ToList() ?? new
+        List<linkHomeApp.Models.Link>();
 
             <div class="col-12 col-md-3 mb-4">
                 <div class="card h-100">
